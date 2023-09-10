@@ -1,0 +1,161 @@
+1) Вывести информацию о пользователях, старше 25 лет:
+SELECT name, surname, email, date_of_birth FROM users WHERE date_of_birth <= '1997-11-11'
+
+2) Вывести информацию о пользователях, совершивших хотя бы один заказ в этом году:
+SELECT DISTINCT name, surname, email FROM orders JOIN users ON orders.user_id = users.id AND order_date >= '2022-01-01'
+
+3) Вывести информацию о ноутбуках с операционной системой windows 10
+SELECT items.name, items.price, laptops.cpu_type, laptops.os, laptops.video_card FROM items JOIN laptops ON items.id = laptops.id AND laptops.os = 'windows 10'
+
+4) Вывести информацию о ноутбуках с процессором intel core i7
+SELECT items.name, items.price, laptops.cpu_type, laptops.os, laptops.video_card FROM items JOIN laptops ON items.id = laptops.id AND laptops.cpu_type = 'intel core i7'
+
+5) Вывести информацию о смартфонах с процессором qualcomm snapdragon
+SELECT items.name, items.price, smartphones.cpu_type, smartphones.rom FROM items JOIN smartphones ON items.id = smartphones.id AND smartphones.cpu_type = 'qualcomm snapdragon'
+
+6) Вывести информацию о планшетах с поддержкой 4G
+SELECT items.name, items.price, tablets.internet_standard, tablets.rom_size FROM items JOIN tablets ON items.id = tablets.id AND tablets.internet_standard = '4G'
+
+7) Вывести информацию о планшетах стоимостью более 100
+SELECT items.name, items.price, tablets.internet_standard, tablets.rom_size FROM items JOIN tablets ON items.id = tablets.id AND items.price > 100
+
+8) Вывести информацию о системных блоках с размером ssd памяти больше 100
+SELECT items.name, items.price, system_units.ssd_size, system_units.cpu_type FROM items JOIN system_units ON items.id = system_units.id AND system_units.ssd_size > 100
+
+9) Вывести информацию о системных блоках с гарантийной поддержкой порядка 3 лет
+SELECT items.name, items.price, system_units.ssd_size, system_units.cpu_type, system_units.guarantee_period FROM items JOIN system_units ON items.id = system_units.id AND system_units.guarantee_period = 3
+
+10) Вывести информацию о телевизорах с поддержкой HDR
+SELECT items.name, items.price, tvs.is_hdr, tvs.os FROM items JOIN tvs ON items.id = tvs.id AND tvs.is_hdr = true
+
+11) Вывести информацию о телевизорах с поддержкой smart tv
+SELECT items.name, items.price, tvs.is_smarttv, tvs.os FROM items JOIN tvs ON items.id = tvs.id AND tvs.is_smarttv = true  
+
+12) Вывести информацию о проводных наушниках 
+SELECT items.name, items.price, headphones.connection_type, headphones.color, headphones.guarantee_period FROM items JOIN headphones ON items.id = headphones.id AND headphones.connection_type = 'wired'
+
+13) Вывести информацию о наушниках стоимостью менее 100
+SELECT items.name, items.price, headphones.connection_type, headphones.color, headphones.guarantee_period FROM items JOIN headphones ON items.id = headphones.id AND items.price < 100
+
+14) Вывести информацию о пылесосах весом 2 кг
+SELECT items.name, items.price, hoovers.suction_power, hoovers.weight FROM items JOIN hoovers ON items.id = hoovers.id AND hoovers.weight = 2
+
+15) Вывести информацию о пылесосах с гарантийным периодом 1 год
+SELECT items.name, items.price, hoovers.suction_power, hoovers.weight, hoovers.guarantee_period FROM items JOIN hoovers ON items.id = hoovers.id AND hoovers.guarantee_period = 1
+
+16) Вывести информацию о холодильниках с более чем 2-мя регулируемыми полками
+SELECT items.name, items.price, fridges.color, fridges.regulated_shelves_number FROM items JOIN fridges ON items.id = fridges.id AND fridges.regulated_shelves_number > 2
+
+17) Вывести информацию о холодильниках с поддержкой индикации
+SELECT items.name, items.price, fridges.color, fridges.is_indication FROM items JOIN fridges ON items.id = fridges.id AND fridges.is_indication = true
+
+18) Вывести информацию об игровых консолях с поддержкой hdr
+SELECT items.name, items.price, game_consoles.is_hdr FROM items JOIN game_consoles ON items.id = game_consoles.id AND game_consoles.is_hdr = true
+
+19) Вывести информацию об игровых консолях с объемом ssd памяти более 100
+SELECT items.name, items.price, game_consoles.is_hdr, game_consoles.ssd_size FROM items JOIN game_consoles ON items.id = game_consoles.id AND game_consoles.ssd_size > 100
+
+20) Вывести информацию о станках с мощностью потребления более 200
+SELECT items.name, items.price, grinders.power_consumption, grinders.max_wheel_diameter FROM items JOIN grinders ON items.id = grinders.id AND grinders.power_consumption > 200
+
+21) Вывести информацию о станках с гарантийным периодом не менее 2-х лет
+SELECT items.name, items.price, grinders.power_consumption, grinders.guarantee_period FROM items JOIN grinders ON items.id = grinders.id AND grinders.guarantee_period >= 2
+
+22) Вывести информацию о камерах с качеством съемки ultra HD
+SELECT items.name, items.price, cameras.quality, cameras.matrix_type FROM items JOIN cameras ON items.id = cameras.id AND cameras.quality = 'Ultra HD'
+
+23) Вывести информацию о камерах с поддержкой wi-fi
+SELECT items.name, items.price, cameras.quality, cameras.is_wifi FROM items JOIN cameras ON items.id = cameras.id AND cameras.is_wifi = true
+
+24) Вывести информацию о видеорегистраторах с fps = 30 
+SELECT items.name, items.price, video_recorders.fps, video_recorders.viewing_angle FROM items JOIN video_recorders ON items.id = video_recorders.id AND video_recorders.fps = '30'
+
+25) Вывести информацию о видеорегистраторах с поддержкой ночной съемки
+SELECT items.name, items.price, video_recorders.fps, video_recorders.is_night_shooting FROM items JOIN video_recorders ON items.id = video_recorders.id AND video_recorders.is_night_shooting = true
+
+26) Вывести информацию о производителях таких товаров, чья стоимость превышает 500
+SELECT DISTINCT manufacturers.name, items.price FROM manufacturers JOIN items ON manufacturers.id = items.manufacturer_id AND items.price > 500
+
+27) Вывести id пользователей, совершавших покупки товаров стоимостью более 500
+SELECT DISTINCT carts.user_id, items.price FROM carts JOIN items ON carts.item_id = items.id AND items.price > 500
+
+28) Вывести id пользователей, имеющих избранные товары стоимостью более 500 
+SELECT DISTINCT favourite_items.user_id, items.price FROM favourite_items JOIN items ON favourite_items.item_id = items.id AND items.price > 500
+
+29) Вывести id магазинов, имеющих товары стоимостью менее 200
+SELECT DISTINCT items_within_stores.store_id, items.price FROM items_within_stores JOIN items ON items_within_stores.item_id = items.id AND items.price < 200
+
+30) Вывести пользователей, у которых меньше 5 заказов 
+
+SELECT user_id, COUNT(item_id) FROM orders GROUP BY user_id HAVING COUNT(item_id) < 5
+
+31) Вывести города людей с дополнительным телефоном
+
+SELECT DISTINCT address_books.city, users.extra_phone FROM users JOIN address_books ON users.id = address_books.user_id AND users.extra_phone IS NOT NULL 
+
+32) Вывести информацию про товары с максимальной ценой
+SELECT id, name, description, price FROM items WHERE price = (SELECT max(price) FROM items)
+
+33) Вывести информацию про производителей с количеством товара, большим 5
+SELECT manufacturer_id, COUNT(*) FROM items GROUP BY manufacturer_id HAVING COUNT(*) > 5
+
+34) Вывести те дни, в которых количество заказов было больше 4
+SELECT order_date, COUNT(*) FROM orders GROUP BY order_date HAVING COUNT(*) > 4
+
+35) Вывести количество холодильников, соответствующих возможным цветам
+SELECT color, COUNT(*) FROM fridges GROUP BY color
+
+36) Вывести количество типов процессоров ноутбуков по возрастанию
+SELECT cpu_type, COUNT(*) FROM laptops GROUP BY cpu_type ORDER BY COUNT(*) ASC
+
+37) Вывести информацию о камерах в порядке возрастания качества
+SELECT zoom, quality, matrix_type FROM cameras ORDER BY quality ASC
+
+38) Вывести количество магазинов по городам 
+SELECT city, COUNT(DISTINCT city) FROM address_books GROUP BY city
+
+39) Вывести 5 наиболее дорогих наушников
+SELECT items.price, items.name, headphones.connection_type FROM items JOIN headphones ON headphones.id = items.id ORDER BY items.price DESC LIMIT 5
+
+40) Вывести информацию о видеорегистраторе с максимальной частотой съемки 
+SELECT id, fps, viewing_angle, max_frame_frequency FROM video_recorders WHERE max_frame_frequency = (SELECT max(max_frame_frequency) FROM video_recorders)
+
+41) Вывести информацию о телевизорах, поддерживающих hdr в порядке возрастания цены
+SELECT tvs.id, tvs.is_hdr, tvs.os, items.price, items.name FROM tvs JOIN items ON tvs.id = items.id WHERE tvs.is_hdr = true ORDER BY items.price ASC
+
+42) Вывести информацию о количестве планшетов с определенным поддерживаемым интернет-стандартом
+SELECT internet_standard, COUNT(*) FROM tablets GROUP BY internet_standard
+
+43) Вывести информацию о системном блоке с наибольшим объемом ssd памяти
+SELECT ssd_size, id, os, video_card, cpu_type FROM system_units ORDER BY ssd_size DESC LIMIT 1
+
+44) Вывести 5 наиболее дорогих смартфонов 
+SELECT items.price, smartphones.id, smartphones.cpu_type, smartphones.camera_quality FROM smartphones JOIN items ON smartphones.id = items.id ORDER BY items.price DESC LIMIT 5
+
+45) Вывести информацию о пылесосах с минимальным потреблением энергии
+SELECT id, power_consumption, nozzles_number FROM hoovers WHERE power_consumption = (SELECT min(power_consumption) FROM hoovers)
+
+46) Вывести информацию о количестве станков, сгруппированных по сроку гарантийного обслуживания
+SELECT guarantee_period, COUNT(*) FROM grinders GROUP BY guarantee_period 
+
+47) Вывести ноутбуки с процессором amd
+SELECT DISTINCT cpu_type FROM laptops WHERE cpu_type LIKE 'amd%'
+
+48) найти товары или людей, которые заказали товары в каком-то промежутке времени
+SELECT id FROM orders WHERE order_date > '2022-11-19'
+
+49) кол-во заказов / позиций. если от 0 то x - то мало, если от x до - нормально, 
+SELECT item_quantity, 
+CASE WHEN item_quantity < 2 THEN 'little'
+WHEN item_quantity >=2 AND item_quantity < 5 THEN 'ok'
+WHEN item_quantity >=5 THEN 'many'
+END
+FROM items_within_stores;
+
+50) найти людей, которые заказывали только одну категорию товаров 
+SELECT orders.user_id, COUNT(MOD(items_within_orders.item_id,12)) FROM (orders JOIN items_within_orders ON orders.id = items_within_orders.order_id) GROUP BY orders.user_id HAVING COUNT(MOD(items_within_orders.item_id,12)) = 1
+
+51) максимальный заказ, сделанный после определенной даты
+
+SELECT orders.id, orders.order_date, items.price FROM orders JOIN items_within_orders ON orders.id = items_within_orders.order_id JOIN items ON items_within_orders.item_id = items.id WHERE orders.order_date > '2022-11-19' ORDER BY items.price DESC LIMIT 1
+
